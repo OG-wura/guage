@@ -120,7 +120,10 @@ backlog() {
     'G7	type: docs	area: docs	gate: every document agrees with the code' \
     'G8	type: security	area: ci	gate: required checks set, direct push to main rejected' \
     'G9	type: research	area: docs	gate: no open High risk without mitigation' \
-    'G10	type: docs	area: docs	gate: ROADMAP.md current in the latest merged PR'
+    'G10	type: docs	area: docs	gate: ROADMAP.md current in the latest merged PR' \
+    '7.5	type: test	area: sep1	test(sep1): prove redirect refusals stop before a request leaves' \
+    '7.6	type: test	area: sep1	test(sep1): pin nil versus empty ACCOUNTS in Recognized' \
+    '7.7	type: test	area: sep1	test(sep1): treat a whitespace home domain as absent'
 }
 
 strip_backticks() {
