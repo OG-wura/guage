@@ -10,52 +10,52 @@ func TestParseAccounts(t *testing.T) {
 	valid := "GDSX2WUFUT7KCMTUNG3IUQWIUQSC4XNKQ5NTGEZRKLTMLCSJTCUVBEVG"
 
 	cases := []struct {
-		name            string
-		body            string
-		wantLen         int
-		wantMalformed   int
-		wantNil         bool
-		wantStep        Step
+		name          string
+		body          string
+		wantLen       int
+		wantMalformed int
+		wantNil       bool
+		wantStep      Step
 	}{
 		{
-			name:     "accounts absent",
-			body:     "",
-			wantLen:  0,
+			name:          "accounts absent",
+			body:          "",
+			wantLen:       0,
 			wantMalformed: 0,
-			wantNil:  true,
-			wantStep: StepNoKeys,
+			wantNil:       true,
+			wantStep:      StepNoKeys,
 		},
 		{
-			name:     "accounts empty",
-			body:     "ACCOUNTS = []",
-			wantLen:  0,
+			name:          "accounts empty",
+			body:          "ACCOUNTS = []",
+			wantLen:       0,
 			wantMalformed: 0,
-			wantNil:  false,
-			wantStep: StepOK,
+			wantNil:       false,
+			wantStep:      StepOK,
 		},
 		{
-			name:     "valid beside non-string",
-			body:     "ACCOUNTS = [\"" + valid + "\", 42]",
-			wantLen:  1,
+			name:          "valid beside non-string",
+			body:          "ACCOUNTS = [\"" + valid + "\", 42]",
+			wantLen:       1,
 			wantMalformed: 1,
-			wantNil:  false,
-			wantStep: StepOK,
+			wantNil:       false,
+			wantStep:      StepOK,
 		},
 		{
-			name:     "all invalid",
-			body:     "ACCOUNTS = [42, 7]",
-			wantLen:  0,
+			name:          "all invalid",
+			body:          "ACCOUNTS = [42, 7]",
+			wantLen:       0,
 			wantMalformed: 2,
-			wantNil:  false,
-			wantStep: StepOK,
+			wantNil:       false,
+			wantStep:      StepOK,
 		},
 		{
-			name:     "all invalid beside passphrase",
-			body:     "NETWORK_PASSPHRASE = \"x\"\nACCOUNTS = [42, 7]",
-			wantLen:  0,
+			name:          "all invalid beside passphrase",
+			body:          "NETWORK_PASSPHRASE = \"x\"\nACCOUNTS = [42, 7]",
+			wantLen:       0,
 			wantMalformed: 2,
-			wantNil:  false,
-			wantStep: StepOK,
+			wantNil:       false,
+			wantStep:      StepOK,
 		},
 	}
 

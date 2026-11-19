@@ -58,7 +58,7 @@ guage/
       horizon_test.go                     # fake-server success and failure-mode tests (2.7)
     sep1/
       {fetch,guard,parse}.go               # guarded identity acquisition: hostname check, dial-time IP guard, caps (3.5)
-      {fetch_test,guard_test,parse_test}.go # SSRF, rebinding, redirect, size, sanitizer-boundary and parse tests (3.5)
+      {fetch_test,guard_test,parse_test,accounts_test,home_domain_test,redirect_test}.go # SSRF, rebinding, redirect, size, sanitizer-boundary and parse tests (3.5, 7.23 to 7.25)
     rules/
       {rules,account,signers,thresholds,flags,identity}.go # registry and pure rule boundaries; identity and signers read the two role expectations 3.4 defines (3.1 to 3.5 done)
       facts.go                            # rules.Facts: the observations of one context, in the same pure shape as a rule and returning no finding (3.7)
@@ -67,6 +67,7 @@ guage/
       {text,json,exit}.go                  # P0 renderers, the fact block ahead of the findings, limits footer and outcome mapping (2.6, 3.7)
       markdown.go                         # P1 output (5.3)
       report_test.go                      # golden files, sanitization, determinism, exit tests and the fact block in both formats
+      {limits,empty,nil_facts}_test.go    # golden-free contracts: limits footer last and a JSON key, the empty report in both formats, nil and empty fact blocks (7.14 to 7.16)
     run/
       {run,check,audit}.go                 # P0 orchestration: passphrase, bounded fetch, identity fetch, role severity, accepts, the fact block and `HasPolicy` (2.8, 3.4, 3.5, 3.7)
       {compare,snapshot,diff}.go           # P1 orchestration (5.1, 5.2)

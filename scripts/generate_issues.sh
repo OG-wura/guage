@@ -111,6 +111,16 @@ backlog() {
     '6.3	type: research	area: rules	docs(triage): review external false-positive reports' \
     '6.4	type: research	area: docs	docs(decisions): decide funding and applications (D-07)' \
     '6.5	type: docs	area: docs	docs(outreach): contact issuers, anchors and treasury teams' \
+    '7.10	type: feature	area: model	feat(model): add Valid and Equal helpers to Thresholds and Flags' \
+    '7.14	type: test	area: report	test(report): limits footer is the last text line and a JSON field' \
+    '7.15	type: test	area: report	test(report): render a report with no accounts in both formats' \
+    '7.16	type: test	area: report	test(report): an account with nil facts prints no facts block' \
+    '7.17	type: test	area: report	test(report): exit mapping for accepted findings and fail-on warn' \
+    '7.18	type: test	area: report	test(report): accepted findings counted once in the summary line' \
+    '7.19	type: test	area: report	test(report): repeated rendering is byte-identical in text and JSON' \
+    '7.20	type: test	area: source	test(source): fail the read when a threshold tier is null or absent' \
+    '7.21	type: security	area: source	security(source): bound in-flight requests and stop retries on cancel' \
+    '7.22	type: test	area: sep1	test(sep1): reject malformed hostnames before any dial' \
     'G1	type: test	area: rules	gate: every P0 requirement has passing tests' \
     'G2	type: test	area: rules	gate: every scenario has a fixture and expected findings' \
     'G3	type: test	area: cli	gate: fail-closed paths all exit non-zero' \
@@ -121,9 +131,9 @@ backlog() {
     'G8	type: security	area: ci	gate: required checks set, direct push to main rejected' \
     'G9	type: research	area: docs	gate: no open High risk without mitigation' \
     'G10	type: docs	area: docs	gate: ROADMAP.md current in the latest merged PR' \
-    '7.5	type: test	area: sep1	test(sep1): prove redirect refusals stop before a request leaves' \
-    '7.6	type: test	area: sep1	test(sep1): pin nil versus empty ACCOUNTS in Recognized' \
-    '7.7	type: test	area: sep1	test(sep1): treat a whitespace home domain as absent'
+    '7.23	type: test	area: sep1	test(sep1): prove redirect refusals stop before a request leaves' \
+    '7.24	type: test	area: sep1	test(sep1): count malformed ACCOUNTS without dropping the document' \
+    '7.25	type: test	area: sep1	test(sep1): treat a whitespace home domain as absent'
 }
 
 strip_backticks() {
