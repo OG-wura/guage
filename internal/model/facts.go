@@ -19,9 +19,21 @@ package model
 // for a report assembled by hand, and a renderer prints no fact lines for such an
 // account rather than reading a missing block as an answer about the world.
 type AccountFacts struct {
-	Reachability *Reachability  `json:"reachability"`
-	Declared     *DeclaredFacts `json:"declared"`
-	Identity     *IdentityFacts `json:"identity"`
+	Reachability *Reachability   `json:"reachability"`
+	Declared     *DeclaredFacts  `json:"declared"`
+	Identity     *IdentityFacts  `json:"identity"`
+	Trustlines   []TrustlineFact `json:"trustlines,omitempty"`
+}
+
+// TrustlineFact describes exposure to one non-native asset issuer. It contains
+// no balance amounts.
+type TrustlineFact struct {
+	AssetCode    string `json:"asset_code"`
+	AssetIssuer  string `json:"asset_issuer"`
+	Authorized   bool   `json:"authorized"`
+	Clawback     bool   `json:"clawback"`
+	IssuerFlags  *Flags `json:"issuer_flags,omitempty"`
+	IssuerStatus string `json:"issuer_status,omitempty"`
 }
 
 // Reachability is the smallest number of signatures that can authorize each
@@ -65,10 +77,13 @@ type DeclaredThresholds struct {
 }
 
 type DeclaredFlags struct {
-	AuthRequired    *bool `json:"auth_required"`
-	AuthRevocable   *bool `json:"auth_revocable"`
-	AuthImmutable   *bool `json:"auth_immutable"`
-	ClawbackEnabled *bool `json:"clawback"`
+	AuthRequired  *bool `json:"auth_required"`
+	AuthRevocable *bool `json:"auth_revocable"`
+	AuthImmutable *bool `json:"auth_immutable"`
+	// ClawbackEnabled renders as clawback_enabled, the name Flags uses in account.go,
+	// so one report spells the bit one way. The TOML key stays clawback
+	// (internal/policy/expectations.go); only the JSON name follows the snapshot.
+	ClawbackEnabled *bool `json:"clawback_enabled"`
 }
 
 // IdentityFacts is what the guarded fetcher observed for one home domain. The
